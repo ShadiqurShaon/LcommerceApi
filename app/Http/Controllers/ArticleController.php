@@ -40,8 +40,20 @@ class ArticleController extends Controller
         
     }
 
-    public function update()
+    public function update(Request $request,$id)
     {
+        $article = Article::where('id','=',$id)
+            ->where('user_id','=',$request->user()->id)
+            ->first();
+
+        $article->title = $request->input('title');
+            $article->subject = $request->input('subject');
+            $article->description=$request->input('description');
+            $article->tags =$request->input('tags');
+
+            $article->save();
+
+            return "update successfully";
         
     }
 

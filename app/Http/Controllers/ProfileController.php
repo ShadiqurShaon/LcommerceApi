@@ -32,6 +32,8 @@ class ProfileController extends Controller
         $profileOfUser->pic = $request->input('pic');
         $profileOfUser->bio = $request->input('bio');
 
+        $profileOfUser->save();
+
         return 'your Profile update successfully';
         
     }
