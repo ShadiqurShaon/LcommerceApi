@@ -27,9 +27,10 @@ Route::middleware('jwt.auth')->group(function(){
 
     //Articles
     Route::post('article','ArticleController@store');
-    Route::post('article/{id}','ArticleController@update');
+    Route::put('article/{id}','ArticleController@update');
     Route::get('article','ArticleController@index');
     Route::get('article/{id}','ArticleController@show');
+    Route::delete('article/{id}','ArticleController@delete');
 
 
 });

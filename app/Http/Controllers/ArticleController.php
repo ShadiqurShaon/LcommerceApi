@@ -57,8 +57,10 @@ class ArticleController extends Controller
         
     }
 
-    public function delete()
+    public function delete($id)
     {
-        
+        Article::where('id','=',$id)->delete();
+
+        return 'delete successfully';
     }
 }
