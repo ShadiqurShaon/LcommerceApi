@@ -3,18 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\User;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        
+
+        $artilesOfUser = User::where('id','=',$request->user()->id)
+            ->with('profile','article')->get();
+
+        return $artilesOfUser;
     }
 
-    public function show()
+    public function show(Request $request ,$id)
     {
-        
+        $article = Article::where('id','=',$id)
+            ->where('user_id','=',$request->user()->id)
+            ->get();
+
+        return $article;
     }
 
     public function store(Request $request)

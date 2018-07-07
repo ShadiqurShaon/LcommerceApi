@@ -27,5 +27,9 @@ Route::middleware('jwt.auth')->group(function(){
 
     //Articles
     Route::post('article','ArticleController@store');
+    Route::get('article','ArticleController@index');
+    Route::get('article/{id}','ArticleController@show');
+
+
 });
 
