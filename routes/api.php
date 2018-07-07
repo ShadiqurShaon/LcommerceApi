@@ -24,5 +24,8 @@ Route::middleware('jwt.auth')->group(function(){
 
     Route::post('user/update','ProfileController@update');
     Route::get('user/profile','ProfileController@index');
+
+    //Articles
+    Route::post('article','ArticleController@store');
 });
 
