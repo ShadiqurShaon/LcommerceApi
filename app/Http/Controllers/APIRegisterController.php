@@ -32,9 +32,9 @@ class APIRegisterController extends Controller
         ]);
         $user->profile()->create();
 
-        $user = User::first();
+//        $user = User::first();
         $token = JWTAuth::fromUser($user);
 
-        return Response::json(compact('token'));
+        return Response::json(compact('token','user'));
     }
 }
