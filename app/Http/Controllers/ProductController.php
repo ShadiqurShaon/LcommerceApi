@@ -9,9 +9,16 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index($category)
     {
 
+        $productdetails = ProductCategory::where('category_name','=',$category)->with('productDetails')->get();
+
+        if(isset($productdetails)){
+
+            return $productdetails[0]->productDetails;
+        }
+        return "no product fount";
     }
     public function store(Request $request,$category)
     {
@@ -31,7 +38,12 @@ class ProductController extends Controller
 
             ]);
 
-            $productCategory->productDetails()->save($productDetails);
+            $productDetails = $productCategory->productDetails()->save($productDetails);
+
+
+
+            $productDetails->productPhotoAndReview()->createMany($product["otherImage"]);
+
 
             }
 
@@ -52,6 +64,19 @@ class ProductController extends Controller
     public function delete()
     {
 
+    }
+
+    public function productById($id)
+    {
+
+        $productDetails = ProductDetails::where('id','=',$id)->with('ProductPhotosAndReviews')->get();
+
+        if(isset($productDetails)){
+
+            return response()->json($productDetails);
+        }else{
+            return "product not found";
+        }
     }
 
 }

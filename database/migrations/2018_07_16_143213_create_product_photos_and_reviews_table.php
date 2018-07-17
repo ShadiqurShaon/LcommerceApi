@@ -15,8 +15,8 @@ class CreateProductPhotosAndReviewsTable extends Migration
     {
         Schema::create('product_photos_and_reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('product_detail_id');
-            $table->foreign('product_detail_id')
+            $table->unsignedInteger('product_details_id');
+            $table->foreign('product_details_id')
                 ->references('id')->on('product_details')->onDelete('cascade');
             $table->string('photos');
             $table->timestamps();
