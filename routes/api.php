@@ -39,7 +39,7 @@ Route::middleware('jwt.auth')->group(function(){
     Route::put('product/{id}','ProductController@update');
     Route::get('product/{category}','ProductController@index');
     Route::get('productByID/{id}','ProductController@productById');
-
+    Route::delete('product/{id}','ProductController@delete');
 
 
 

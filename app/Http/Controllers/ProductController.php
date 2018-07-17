@@ -77,10 +77,11 @@ class ProductController extends Controller
         return $upsatedProduct;
 
     }
-    public function delete()
-
+    public function delete($id)
     {
+        ProductDetails::where('id','=',$id)->delete();
 
+        return "product delete successfully";
     }
 
     public function productById($id)
