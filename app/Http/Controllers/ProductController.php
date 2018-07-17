@@ -57,11 +57,28 @@ class ProductController extends Controller
         return "Stored successfully";
     }
 
-    public function update()
+    public function update(Request $request , $id)
     {
+        $productDeatails = ProductDetails::find($id);
+
+        $productDeatails->name = $request->input('name');
+        $productDeatails->description = $request->input('description');
+        $productDeatails->price = $request->input('price');
+        $productDeatails->image = $request->input('image');
+        $productDeatails->discount = $request->input('discount');
+    $productDeatails->save();
+        $product = ProductDetails::find($id);
+        $product->productPhotoAndReview()->delete();
+
+        $productPhoto = $request->input('otherImage');
+
+        $upsatedProduct = $product->productPhotoAndReview()->createMany($productPhoto);
+
+        return $upsatedProduct;
 
     }
     public function delete()
+
     {
 
     }
