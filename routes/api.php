@@ -32,6 +32,10 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('article/{id}','ArticleController@show');
     Route::delete('article/{id}','ArticleController@delete');
 
+    //Product
+    Route::post('product/{category}','ProductController@store');
+
+
 
 });
 
