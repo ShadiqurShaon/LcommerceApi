@@ -69,11 +69,11 @@ class ProductController extends Controller
     public function productById($id)
     {
 
-        $productDetails = ProductDetails::where('id','=',$id)->with('ProductPhotosAndReviews')->get();
+        $productDetails = ProductDetails::where('id','=',$id)->with('productPhotoAndReview')->get();
 
         if(isset($productDetails)){
 
-            return response()->json($productDetails);
+            return response()->json($productDetails[0]);
         }else{
             return "product not found";
         }

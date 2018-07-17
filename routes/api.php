@@ -37,7 +37,7 @@ Route::middleware('jwt.auth')->group(function(){
     //Product
     Route::post('product/{category}','ProductController@store');
     Route::get('product/{category}','ProductController@index');
-    Route::post('product/{id}','ProductController@update');
+    Route::get('productByID/{id}','ProductController@productById');
 
 
 
