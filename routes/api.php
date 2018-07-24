@@ -16,6 +16,10 @@ use Illuminate\Http\Request;
 Route::post('user/register', 'APIRegisterController@register');
 Route::post('user/login', 'APILoginController@login');
 
+
+Route::get('product/{category}','ProductController@index');
+Route::get('productByID/{id}','ProductController@productById');
+
 Route::middleware('jwt.auth')->group(function(){
 
     Route::get('/user', function (Request $request) {
@@ -26,19 +30,18 @@ Route::middleware('jwt.auth')->group(function(){
     Route::get('user/profile','ProfileController@index');
 
     //Articles
-    Route::post('article','ArticleController@store');
-    Route::put('article/{id}','ArticleController@update');
-    Route::get('article','ArticleController@index');
-    Route::get('article/{id}','ArticleController@show');
-    Route::delete('article/{id}','ArticleController@delete');
+    // Route::post('article','ArticleController@store');
+    // Route::put('article/{id}','ArticleController@update');
+    // Route::get('article','ArticleController@index');
+    // Route::get('article/{id}','ArticleController@show');
+    // Route::delete('article/{id}','ArticleController@delete');
 
     //productcategory
     Route::get('productcategory','ProductCategoryController@index');
     //Product
-    Route::post('product/{category}','ProductController@store');
     Route::put('product/{id}','ProductController@update');
-    Route::get('product/{category}','ProductController@index');
-    Route::get('productByID/{id}','ProductController@productById');
+    Route::post('product/{category}','ProductController@store');
+    
     Route::delete('product/{id}','ProductController@delete');
 
 
